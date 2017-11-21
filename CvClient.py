@@ -7,7 +7,7 @@ class CvClient:
 
     def __init__(self, webpage, username, password):
         self.webpage = webpage
-        self.driver = webdriver.PhantomJS()
+        self.driver = webdriver.PhantomJS('/usr/local/bin/phantomjs')
         self.password = password
         self.username = username
 
