@@ -5,6 +5,7 @@ Mitjançant web scraping obté els missatges més recents del campus virtual de 
 ## Instal·lació
 
 ```
+$ pip install -r requirements.txt
 $ chmod +x notifier.sh
 $ chmod +x notifier.py
 ```
