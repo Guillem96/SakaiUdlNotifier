@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
-
+import os
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 
 # Client Campus virtual UdL
 class CvClient:
 
     def __init__(self, webpage, username, password):
         self.webpage = webpage
-        self.driver = webdriver.PhantomJS('/usr/local/bin/phantomjs')
+        options = Options()
+        options.add_argument("--headless")
+        self.driver = webdriver.Firefox(firefox_options=options)
         self.password = password
         self.username = username
 

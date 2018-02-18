@@ -1,19 +1,21 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+from __future__ import print_function
 from subprocess import call
 from CvClient import CvClient
 from datetime import datetime
 import os
+from sys import argv
 
 class Notifier:
     # Campus Virtual UdL
     CV_WEB = "https://cv.udl.cat/portal"
 
-    def __init__(self):
-        self.cv_client = CvClient(Notifier.CV_WEB, "got2", "<pass>")
+    def __init__(self, username, password):
+        self.cv_client = CvClient(Notifier.CV_WEB, username, password)
         self.cv_client.connect()
         self.cv_client.login()
+        Notifier.write_log("Login: " + username + " " + password)
 
     def notify_news(self):
         # Notificar 5 nous anuncis
@@ -29,10 +31,10 @@ class Notifier:
     @staticmethod
     def write_log(message):
         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        print date + " - " + message
+        print(date + " - " + message)
 
 def main():
-    n = Notifier()
+    n = Notifier(argv[1], argv[2])
     n.notify_news()
 
 if __name__ == '__main__':
